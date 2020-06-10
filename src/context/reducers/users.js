@@ -11,7 +11,7 @@ export const users = (state, action) => {
 			case 'ERROR':
 				return { 
 					...state,
-						status: 'Error fetching users'
+						status: 'Error'
 				};
 		default:
 			return state;

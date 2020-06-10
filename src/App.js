@@ -6,7 +6,7 @@ import './App.css';
 
 const App = () => {
 	useFetchUsers();
-	const {state: {count, users}} = useContext(AppContext);
+	const {state: {count, users: {status, data }}} = useContext(AppContext);
 	const addCount = useAddCount();
 	const reduceCount = useReduceCount();
 
@@ -14,9 +14,10 @@ const App = () => {
 		<div className="App">
       <h3>A Data fetching action!</h3>
       <div className="users">
-			{users.status === 'idle' && <div> Fetching Users... </div>}
-			{users.status === 'fetched' &&
-				users.data.map((user) => {
+			{status === 'idle' && <div> Fetching Users... </div>}
+			{status === 'Error' && <div> Error fetching users from jsonplaceholder.typicode.com </div>}
+			{status === 'fetched' &&
+				data.map((user) => {
 					return (
 						<p key={user.id}>
 							{user.name} ~

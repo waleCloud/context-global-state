@@ -8,6 +8,11 @@ export const users = (state, action) => {
 					status: action.payload.status,
 					data: action.payload.data 
 			};
+			case 'ERROR':
+				return { 
+					...state,
+						status: 'Error fetching users'
+				};
 		default:
 			return state;
 	}
